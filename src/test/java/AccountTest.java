@@ -23,9 +23,9 @@ public class AccountTest {
         this.result = result;
     }
 
-    @Parameterized.Parameters
-    public static Object[][] getAccountData(){
-        return new Object[][] {
+    @Parameterized.Parameters(name = "Имя пользователя: {0}, {1}")
+    public static Object[][] getAccountData() {
+        return new Object[][]{
 
                 {"С ю", true},
                 {"Гарри Стайлз", true},
@@ -47,16 +47,16 @@ public class AccountTest {
                 {"Гарри  Стайлз", false},
                 {"Гарри Стайлз Стайлз", false},
                 {"Гаррик Стайлзз Стайлзз", false},
+                {"", false},
+                {null, false},
         };
     }
 
     @Test
-    public void nameLength(){
+    public void nameLength() {
         Account account = new Account(name);
 
         assertEquals(result, account.checkNameToEmboss());
     }
 
 }
-
-
